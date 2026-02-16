@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="card shadow-lg mx-auto" style="max-width: 700px">
+    <div class="card-header text-center fs-4 fw-bold">Add Course</div>
+
+    <form #courseForm="ngForm" (ngSubmit)="onSubmit(courseForm)">
+      <div class="card-body">
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label">Title</label>
+
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter title"
+            name="title"
+            [(ngModel)]="model.title"
+            #title="ngModel"
+            required
+            [class.is-invalid]="title.invalid && (title.touched || courseForm.submitted)"
+          />
+
+          @if (title.invalid && (title.touched || courseForm.submitted)) {
+            <div class="text-danger">Title is required</div>
+          }
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label">Description</label>
+
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Enter description"
+            name="description"
+            [(ngModel)]="model.description"
+            #description="ngModel"
+            required
+            [class.is-invalid]="description.invalid && (title.touched || courseForm.submitted)"
+          ></textarea>
+
+          @if (description.invalid && (description.touched || courseForm.submitted)) {
+            <div class="text-danger">Description is required</div>
+          }
+        </div>
+
+        <div class="">
+          <label for="image">Choose a image</label>
+          <input
+            class="m-3"
+            type="file"
+            name="image"
+            id="image"
+            #image="ngModel"
+            accept="image/*"
+            multiple="false"
+            (change)="onFileSelected($event)"
+            [(ngModel)]="model.image"
+            required
+          />
+
+          @if(cover){
+            <div class="mt-3 text-center">
+              <img [src]="cover" alt="image" class="h-50 w-50 mb-4">
+            </div>
+          }
+
+          @if(showError){
+            <div class="text-danger">Image is required</div>
+          }
+        </div>
+
+        <div class="text-center">
+          <!-- <button class="btn btn-primary px-4" [disabled]="courseForm.invalid">Submit</button> -->
+          <button class="btn btn-primary px-4">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

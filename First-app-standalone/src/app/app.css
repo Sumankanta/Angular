@@ -1,0 +1,20 @@
+/* .gradient-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.gradient-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    125% 125% at 50% 10%,
+    #000000 40%,
+    #350136 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+} */
